@@ -3,14 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-export default function loginPage() {
+export default function FirstPage() {
   return (
     <View style={styles.container}>
       <View style={styles.viewGuest}>
         <Text style={styles.textAnimal}>Welcome</Text>
 
         <TouchableOpacity onPress={() => {}}>
-          <FontAwesome5 name="chevron-right" size={24} />
+          <FontAwesome5 name="chevron-right" size={24} color="#3f3d56" />
         </TouchableOpacity>
       </View>
 
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    height: 52,
+    height: 56,
     width: "100%",
     borderWidth: 2,
     borderRadius: 10,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    height: 52,
+    height: 56,
     width: "100%",
     borderWidth: 2,
     borderRadius: 10,
