@@ -2,8 +2,15 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function FirstPage() {
+  const navigation = useNavigation();
+
+  function handleNavigateToLoginPage() {
+    navigation.navigate("LoginPage");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.viewGuest}>
@@ -21,7 +28,10 @@ export default function FirstPage() {
           sim são verdadeiros heróis dos nossos queridos amiguinhos!
         </Text>
 
-        <TouchableOpacity style={styles.buttonLogin}>
+        <TouchableOpacity
+          style={styles.buttonLogin}
+          onPress={handleNavigateToLoginPage}
+        >
           <Text style={styles.textButtonLogin}>Log in</Text>
         </TouchableOpacity>
 
