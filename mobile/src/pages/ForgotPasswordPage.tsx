@@ -25,7 +25,9 @@ export default function ForgotThePasswordPage() {
         <Text style={styles.text}>Desculpe isso ainda não está pronto.</Text>
         <Text style={styles.text}>Entre em contato por e-mail:</Text>
 
-        <Text style={styles.textEmail}>contatoanimalhelp@email.com</Text>
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={styles.textEmail}>contatoanimalhelp@email.com</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
