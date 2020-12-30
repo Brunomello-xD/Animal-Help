@@ -11,6 +11,10 @@ export default function FirstPage() {
     navigation.navigate("LoginPage");
   }
 
+  function handleNavigateRegistrationPage() {
+    navigation.navigate("RegistrationPage");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.viewGuest}>
@@ -35,7 +39,10 @@ export default function FirstPage() {
           <Text style={styles.textButtonLogin}>Log in</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonSignUp}>
+        <TouchableOpacity
+          style={styles.buttonSignUp}
+          onPress={handleNavigateRegistrationPage}
+        >
           <Text style={styles.textButtonSignUp}>Cadastrar</Text>
         </TouchableOpacity>
       </View>

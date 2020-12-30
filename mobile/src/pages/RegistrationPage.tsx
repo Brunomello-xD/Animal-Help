@@ -14,22 +14,21 @@ import { Input } from "react-native-elements";
 
 const windowHeight = Dimensions.get("window").height;
 
-export default function LoginPage() {
+export default function RegistrationPage() {
   const [visible, setVisible] = useState(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
 
-  function handleNavigateToGoBack() {
-    navigation.goBack();
+  function handleNavigateToFistPage() {
+    navigation.navigate("FirstPage");
   }
 
-  function handleNavigateToRegistrationPage() {
-    navigation.navigate("RegistrationPage");
-  }
-
-  function handleNavigateToForgotThePasswordPage() {
-    navigation.navigate("ForgotPasswordPage");
+  function handleNavigateToLoginPage() {
+    navigation.navigate("LoginPage");
   }
 
   return (
@@ -40,16 +39,25 @@ export default function LoginPage() {
       <View style={styles.viewMain}>
         <TouchableOpacity
           style={styles.buttonGoBack}
-          onPress={handleNavigateToGoBack}
+          onPress={handleNavigateToFistPage}
         >
           <FontAwesome5 name="chevron-left" size={24} color="#3f3d56" />
         </TouchableOpacity>
 
-        <Text style={styles.welcome}>Bem-vindo(a)</Text>
-        <Text style={styles.welcomeBack}>de volta!</Text>
+        <Text style={styles.welcome}>Criação de</Text>
+        <Text style={styles.welcomeBack}>Conta!</Text>
 
         <Input
           style={styles.input}
+          onChangeText={(name) => setName(name)}
+          placeholder=" Nome"
+          multiline={false}
+          leftIcon={<FontAwesome5 name="user" size={18} color="#3f3d56" />}
+        />
+
+        <Input
+          style={styles.input}
+          onChangeText={(email) => setEmail(email)}
           placeholder=" E-mail"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -78,14 +86,8 @@ export default function LoginPage() {
           }
         />
 
-        <View style={styles.viewForgotThePassword}>
-          <TouchableOpacity onPress={handleNavigateToForgotThePasswordPage}>
-            <Text style={styles.forgotThePassword}>Esqueceu a senha?</Text>
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.buttonLogin} onPress={() => {}}>
-          <Text style={styles.textButtonLogin}>Log in</Text>
+        <TouchableOpacity style={styles.buttonSignUp} onPress={() => {}}>
+          <Text style={styles.textButtonSignUp}>Cadastrar</Text>
         </TouchableOpacity>
 
         <View style={styles.viewOr}>
@@ -93,10 +95,10 @@ export default function LoginPage() {
         </View>
 
         <TouchableOpacity
-          style={styles.buttonSignUp}
-          onPress={handleNavigateToRegistrationPage}
+          style={styles.buttonLogin}
+          onPress={handleNavigateToLoginPage}
         >
-          <Text style={styles.textButtonSignUp}>Cadastrar</Text>
+          <Text style={styles.textButtonLogin}>Log in</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -135,20 +137,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 
-  viewForgotThePassword: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "center",
-
-    marginBottom: 8,
-  },
-
-  forgotThePassword: {
-    fontFamily: "Nunito_600SemiBold",
-    fontSize: 18,
-    color: "#00bfa6",
-  },
-
   buttonLogin: {
     alignItems: "center",
     justifyContent: "center",
@@ -157,8 +145,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: "#00bfa6",
-    backgroundColor: "#00bfa6",
+    borderColor: "#3f3d56",
 
     marginBottom: 2,
   },
@@ -191,7 +178,8 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: "#3f3d56",
+    borderColor: "#00bfa6",
+    backgroundColor: "#00bfa6",
   },
 
   textButtonSignUp: {
