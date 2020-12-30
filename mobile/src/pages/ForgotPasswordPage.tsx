@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
@@ -25,7 +31,11 @@ export default function ForgotThePasswordPage() {
         <Text style={styles.text}>Desculpe isso ainda não está pronto.</Text>
         <Text style={styles.text}>Entre em contato por e-mail:</Text>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL("mailto:contatoanimalhelp@example.com")
+          }
+        >
           <Text style={styles.textEmail}>contatoanimalhelp@email.com</Text>
         </TouchableOpacity>
       </View>
