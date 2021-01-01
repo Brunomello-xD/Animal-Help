@@ -6,8 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 const { Navigator, Screen } = createStackNavigator();
 
 import FirstPage from "./pages/FirstPage";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/CreateAccount/LoginPage";
+import RegistrationPage from "./pages/CreateAccount/RegistrationPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 export default function Routes() {

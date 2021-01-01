@@ -16,6 +16,8 @@ const windowHeight = Dimensions.get("window").height;
 
 export default function LoginPage() {
   const [visible, setVisible] = useState(false);
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
@@ -50,6 +52,7 @@ export default function LoginPage() {
 
         <Input
           style={styles.input}
+          onChangeText={(email) => setEmail(email)}
           placeholder=" E-mail"
           keyboardType="email-address"
           autoCapitalize="none"
