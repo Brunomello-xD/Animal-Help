@@ -15,12 +15,16 @@ export default function FirstPage() {
     navigation.navigate("RegistrationPage");
   }
 
+  function handleNavigateToGuestMapView() {
+    navigation.navigate("MapView");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.viewGuest}>
         <Text style={styles.textAnimal}>Welcome</Text>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={handleNavigateToGuestMapView}>
           <FontAwesome5 name="chevron-right" size={24} color="#3f3d56" />
         </TouchableOpacity>
       </View>
