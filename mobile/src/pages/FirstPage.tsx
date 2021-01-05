@@ -16,7 +16,7 @@ export default function FirstPage() {
   }
 
   function handleNavigateToGuestMapView() {
-    navigation.navigate("MapView");
+    navigation.navigate("MapScreen");
   }
 
   return (
