@@ -1,15 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Text } from "react-native";
-import Constants from "expo-constants";
+import { View, StyleSheet, Dimensions, Text, StatusBar } from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import mapMarker from "../images/map-marker.png";
+import { RectButton } from "react-native-gesture-handler";
 
 export default function MapScreen() {
-  const pinColor = "#00bfa6";
-
   return (
     <View style={styles.container}>
+      <StatusBar hidden={true} />
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
@@ -34,6 +34,12 @@ export default function MapScreen() {
           </Callout>
         </Marker>
       </MapView>
+
+      <View style={styles.viewButtonCreateOng}>
+        <RectButton style={styles.moreOng} onPress={() => {}}>
+          <FontAwesome5 name="plus" size={20} color="#FFF" />
+        </RectButton>
+      </View>
     </View>
   );
 }
@@ -41,7 +47,6 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
   },
 
   map: {
@@ -76,5 +81,23 @@ const styles = StyleSheet.create({
     color: "#3f3d56",
     fontSize: 14,
     fontFamily: "Nunito_700Bold",
+  },
+
+  viewButtonCreateOng: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  moreOng: {
+    backgroundColor: "#15c3d6",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+
+    position: "absolute",
+    bottom: 100,
   },
 });
