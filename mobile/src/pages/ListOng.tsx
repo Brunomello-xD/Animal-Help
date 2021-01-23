@@ -63,7 +63,7 @@ export default function ListOng() {
 
       <View style={styles.viewButtonCreateOng}>
         <TouchableOpacity style={styles.moreOng}>
-          <FontAwesome5 name="plus" size={14}></FontAwesome5>
+          <FontAwesome5 name="plus" size={20} color="#FFF" />
         </TouchableOpacity>
       </View>
     </View>
