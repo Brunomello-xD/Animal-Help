@@ -88,8 +88,6 @@ const styles = StyleSheet.create({
   },
 
   viewButtonCreateOng: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
   },
 

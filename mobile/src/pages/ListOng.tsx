@@ -8,31 +8,63 @@ import {
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ListOng() {
+  const navigation = useNavigation();
+
+  function handleNavigateToGoBack() {
+    navigation.goBack();
+  }
+
+  function handleNavigateToDetailOng() {
+    navigation.navigate("DetailOng");
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => {}}>
-        <FontAwesome5 name="chevron-left" size={24} color="#3f3d56" />
-      </TouchableOpacity>
+      <View style={styles.viewHeader}>
+        <TouchableOpacity onPress={handleNavigateToGoBack}>
+          <FontAwesome5 name="chevron-left" size={24} color="#3f3d56" />
+        </TouchableOpacity>
 
-      <Text style={styles.textTitleOng}>ONGs parceiras</Text>
+        <Text style={styles.textTitleOng}>ONGs parceiras</Text>
+      </View>
 
       <Text style={styles.textDescription}>
         Escolha umas das ONGs abaixo e ajude nossos heróis.
       </Text>
 
-      <View>
-        <FlatList
-          data={[1, 2, 3, 4]}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(ongs) => String(ongs)}
-          renderItem={() => (
-            <View>
-              <Text>Bruno</Text>
+      <FlatList
+        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}
+        style={styles.flatListDetails}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(ongs) => String(ongs)}
+        renderItem={() => (
+          <View style={styles.viewFlatList}>
+            <Text style={styles.textNameOng}>Francisco de Assis</Text>
+
+            <View style={styles.viewHourOperating}>
+              <Text style={styles.textDescriptionHourOperating}>
+                Horário de funcionamento:
+              </Text>
+              <Text style={styles.textHour}>8 às 18 horas</Text>
             </View>
-          )}
-        />
+
+            <TouchableOpacity
+              style={styles.ButtonGoToOng}
+              onPress={handleNavigateToDetailOng}
+            >
+              <Text style={styles.textButtonGoToOng}>Ver mais detalhes</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+
+      <View style={styles.viewButtonCreateOng}>
+        <TouchableOpacity style={styles.moreOng}>
+          <FontAwesome5 name="plus" size={14}></FontAwesome5>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -46,12 +78,16 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight + 12,
   },
 
+  viewHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
   textTitleOng: {
-    fontFamily: "Nunito_700Bold",
+    fontFamily: "Nunito_800ExtraBold",
     fontSize: 24,
     color: "#3f3d56",
-
-    marginTop: 14,
   },
 
   textDescription: {
@@ -59,6 +95,75 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#3f3d56",
 
-    marginTop: 14,
+    marginTop: 18,
+  },
+
+  flatListDetails: {
+    borderRadius: 12,
+    backgroundColor: "#fff",
+
+    padding: 6,
+    marginTop: 42,
+    marginBottom: 24,
+  },
+
+  viewFlatList: {
+    backgroundColor: "#f2f3f5",
+    borderRadius: 8,
+
+    marginTop: 6,
+    marginBottom: 2,
+    padding: 4,
+  },
+
+  textNameOng: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontSize: 18,
+    color: "#3f3d56",
+  },
+
+  viewHourOperating: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  textDescriptionHourOperating: {
+    fontFamily: "Nunito_600SemiBold",
+    fontSize: 16,
+    color: "#3f3d56",
+  },
+
+  textHour: {
+    fontFamily: "Nunito_600SemiBold",
+    fontSize: 16,
+    color: "#3f3d56",
+
+    marginLeft: 4,
+  },
+
+  textButtonGoToOng: {
+    fontFamily: "Nunito_700Bold",
+    fontSize: 16,
+    color: "#3f3d56",
+  },
+
+  ButtonGoToOng: {
+    marginTop: 6,
+  },
+
+  viewButtonCreateOng: {
+    alignItems: "center",
+  },
+
+  moreOng: {
+    backgroundColor: "#15c3d6",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+
+    position: "absolute",
+    bottom: 12,
   },
 });

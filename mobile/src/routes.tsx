@@ -11,6 +11,7 @@ import RegistrationPage from "./pages/CreateAccount/RegistrationPage";
 import ForgotPasswordPage from "./pages/CreateAccount/ForgotPasswordPage";
 import MapScreen from "./pages/MapScreen";
 import ListOng from "./pages/ListOng";
+import DetailOng from "./pages/DetailOng";
 
 import Header from "./components/Header";
 
@@ -36,6 +37,7 @@ export default function Routes() {
           }}
         />
         <Screen name="ListOng" component={ListOng} />
+        <Screen name="DetailOng" component={DetailOng} />
       </Navigator>
     </NavigationContainer>
   );
