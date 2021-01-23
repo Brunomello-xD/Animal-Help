@@ -6,14 +6,14 @@ import { useNavigation } from "@react-navigation/native";
 
 interface HeaderProps {
   title: string;
-  showCancel?: boolean;
+  isMap?: boolean;
 }
 
-export default function Header({ title, showCancel = true }: HeaderProps) {
+export default function HeaderMap({ title, isMap }: HeaderProps) {
   const navigation = useNavigation();
 
-  function handleGoBackToAppHomePage() {
-    navigation.navigate("OrphanagesMap");
+  function handleNavigateToListOng() {
+    navigation.navigate("ListOng");
   }
 
   return (
@@ -24,9 +24,15 @@ export default function Header({ title, showCancel = true }: HeaderProps) {
 
       <Text style={styles.title}>{title}</Text>
 
-      <BorderlessButton onPress={navigation.goBack}>
-        <Feather name="menu" size={24} color="#3f3d56" />
-      </BorderlessButton>
+      {isMap ? (
+        <BorderlessButton onPress={handleNavigateToListOng}>
+          <Feather name="list" size={24} color="#3f3d56" />
+        </BorderlessButton>
+      ) : (
+        <BorderlessButton onPress={() => {}}>
+          <Feather name="plus" size={24} color="#3f3d56" />
+        </BorderlessButton>
+      )}
     </View>
   );
 }

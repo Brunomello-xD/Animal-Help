@@ -22,6 +22,10 @@ export default function LoginPage() {
 
   const navigation = useNavigation();
 
+  function justATeste() {
+    navigation.navigate("MapScreen");
+  }
+
   function handleNavigateToGoBack() {
     navigation.goBack();
   }
@@ -87,7 +91,7 @@ export default function LoginPage() {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.buttonLogin} onPress={() => {}}>
+        <TouchableOpacity style={styles.buttonLogin} onPress={justATeste}>
           <Text style={styles.textButtonLogin}>Log in</Text>
         </TouchableOpacity>
 

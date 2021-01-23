@@ -10,6 +10,7 @@ import LoginPage from "./pages/CreateAccount/LoginPage";
 import RegistrationPage from "./pages/CreateAccount/RegistrationPage";
 import ForgotPasswordPage from "./pages/CreateAccount/ForgotPasswordPage";
 import MapScreen from "./pages/MapScreen";
+import ListOng from "./pages/ListOng";
 
 import Header from "./components/Header";
 
@@ -31,9 +32,10 @@ export default function Routes() {
           component={MapScreen}
           options={{
             headerShown: true,
-            header: () => <Header showCancel={false} title="Mapa ONGs" />,
+            header: () => <Header title="Mapa ONGs" isMap={true} />,
           }}
         />
+        <Screen name="ListOng" component={ListOng} />
       </Navigator>
     </NavigationContainer>
   );
