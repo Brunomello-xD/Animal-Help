@@ -21,6 +21,10 @@ export default function ListOng() {
     navigation.navigate("DetailOng");
   }
 
+  function handleNavigateToRegistrationOng() {
+    navigation.navigate("RegistrationOng");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.viewHeader}>
@@ -45,7 +49,7 @@ export default function ListOng() {
             <Text style={styles.textNameOng}>Francisco de Assis</Text>
 
             <View style={styles.viewHourOperating}>
-              <Text style={styles.textDescriptionHourOperating}>
+              <Text style={styles.textDescriptionHourOng}>
                 Horário de funcionamento:
               </Text>
               <Text style={styles.textHour}>8 às 18 horas</Text>
@@ -62,7 +66,10 @@ export default function ListOng() {
       />
 
       <View style={styles.viewButtonCreateOng}>
-        <TouchableOpacity style={styles.moreOng}>
+        <TouchableOpacity
+          style={styles.moreOng}
+          onPress={handleNavigateToRegistrationOng}
+        >
           <FontAwesome5 name="plus" size={20} color="#FFF" />
         </TouchableOpacity>
       </View>
@@ -127,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  textDescriptionHourOperating: {
+  textDescriptionHourOng: {
     fontFamily: "Nunito_600SemiBold",
     fontSize: 16,
     color: "#3f3d56",

@@ -3,14 +3,21 @@ import { View, StyleSheet, Dimensions, Text, StatusBar } from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 import mapMarker from "../images/map-marker.png";
 
-function justAlert() {
-  alert("xD");
-}
-
 export default function MapScreen() {
+  const navigation = useNavigation();
+
+  function handleNavigateToRegistrationOng() {
+    navigation.navigate("RegistrationOng");
+  }
+
+  function handleNavigateToDetailOng() {
+    navigation.navigate("DetailOng");
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -40,7 +47,10 @@ export default function MapScreen() {
       </MapView>
 
       <View style={styles.viewButtonCreateOng}>
-        <RectButton style={styles.moreOng} onPress={justAlert}>
+        <RectButton
+          style={styles.moreOng}
+          onPress={handleNavigateToRegistrationOng}
+        >
           <FontAwesome5 name="plus" size={20} color="#FFF" />
         </RectButton>
       </View>
