@@ -38,7 +38,10 @@ export default function MapScreen() {
             longitude: -47.0071137,
           }}
         >
-          <Callout tooltip onPress={() => {}}>
+          <Callout 
+            tooltip 
+            onPress={handleNavigateToDetailOng}
+          >
             <View style={styles.calloutContainer}>
               <Text style={styles.calloutText}>Francisco de Assis</Text>
             </View>
