@@ -50,7 +50,7 @@ export default function ListOng() {
 
             <View style={styles.viewHourOperating}>
               <Text style={styles.textDescriptionHourOng}>
-                Horário de funcionamento:
+                Horário:
               </Text>
               <Text style={styles.textHour}>8 às 18 horas</Text>
             </View>
@@ -60,7 +60,9 @@ export default function ListOng() {
               onPress={handleNavigateToDetailOng}
             >
               <Text style={styles.textButtonGoToOng}>Ver mais detalhes</Text>
+              <FontAwesome5 name="arrow-right" size={16} color="#3f3d56" />
             </TouchableOpacity>
+            
           </View>
         )}
       />
@@ -107,16 +109,20 @@ const styles = StyleSheet.create({
 
   flatListDetails: {
     borderRadius: 12,
+    borderWidth: 0.1,
+    borderColor: "#15c3d6",
     backgroundColor: "#fff",
 
     padding: 6,
-    marginTop: 42,
+    marginTop: 30,
     marginBottom: 24,
   },
 
   viewFlatList: {
-    backgroundColor: "#f2f3f5",
     borderRadius: 8,
+    borderWidth: 0.2,
+    borderColor: "#15c3d6",
+    backgroundColor: "#f2f3f5",
 
     marginTop: 6,
     marginBottom: 2,
@@ -126,7 +132,7 @@ const styles = StyleSheet.create({
   textNameOng: {
     fontFamily: "Nunito_800ExtraBold",
     fontSize: 18,
-    color: "#3f3d56",
+    color: "#15c3d6",
   },
 
   viewHourOperating: {
@@ -148,6 +154,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
 
+
   textButtonGoToOng: {
     fontFamily: "Nunito_700Bold",
     fontSize: 16,
@@ -155,6 +162,10 @@ const styles = StyleSheet.create({
   },
 
   ButtonGoToOng: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+
     marginTop: 6,
   },
 
