@@ -15,7 +15,7 @@ export default function MapScreen() {
   }
 
   function handleNavigateToDetailOng() {
-    navigation.navigate("DetailOng");
+    navigation.navigate("OngDetails");
   }
 
   return (

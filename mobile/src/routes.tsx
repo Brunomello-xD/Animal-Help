@@ -13,6 +13,7 @@ import MapScreen from "./pages/MapScreen";
 import ListOng from "./pages/ListOng";
 import DetailOng from "./pages/DetailOng";
 import RegistrationOng from "./pages/CreateAccount/RegistrationOng";
+import OngDetails from './pages/OngDetails';
 
 import Header from "./components/Header";
 
@@ -40,6 +41,7 @@ export default function Routes() {
         <Screen name="ListOng" component={ListOng} />
         <Screen name="DetailOng" component={DetailOng} />
         <Screen name="RegistrationOng" component={RegistrationOng} />
+        <Screen name="OngDetails" component={OngDetails} />
       </Navigator>
     </NavigationContainer>
   );

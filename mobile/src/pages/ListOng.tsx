@@ -60,7 +60,7 @@ export default function ListOng() {
               onPress={handleNavigateToDetailOng}
             >
               <Text style={styles.textButtonGoToOng}>Ver mais detalhes</Text>
-              <FontAwesome5 name="arrow-right" size={16} color="#3f3d56" />
+              <FontAwesome5 name="paw" size={16} color="#3f3d56" />
             </TouchableOpacity>
             
           </View>
@@ -109,8 +109,6 @@ const styles = StyleSheet.create({
 
   flatListDetails: {
     borderRadius: 12,
-    borderWidth: 0.1,
-    borderColor: "#15c3d6",
     backgroundColor: "#fff",
 
     padding: 6,
@@ -120,8 +118,6 @@ const styles = StyleSheet.create({
 
   viewFlatList: {
     borderRadius: 8,
-    borderWidth: 0.2,
-    borderColor: "#15c3d6",
     backgroundColor: "#f2f3f5",
 
     marginTop: 6,
@@ -153,7 +149,6 @@ const styles = StyleSheet.create({
 
     marginLeft: 4,
   },
-
 
   textButtonGoToOng: {
     fontFamily: "Nunito_700Bold",

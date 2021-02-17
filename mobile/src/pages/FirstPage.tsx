@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   },
 
   viewGuest: {
+
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
