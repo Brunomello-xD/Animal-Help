@@ -18,8 +18,8 @@ export default function OrphanageDetails() {
       </View>
 
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Orf. Esperança</Text>
-        <Text style={styles.description}>Presta assistência a crianças de 06 a 15 anos que se encontre em situação de risco e/ou vulnerabilidade social.</Text>
+        <Text style={styles.title}>Associação São Francisco de Assis</Text>
+        <Text style={styles.description}>Somos uma Associação sem fins lucrativos, formada somente por voluntários, em prol da causa animal na cidade de Mococa-SP.</Text>
       
         <View style={styles.mapContainer}>
           <MapView 
@@ -65,9 +65,14 @@ export default function OrphanageDetails() {
           </View>
         </View>
 
-        <RectButton style={styles.contactButton} onPress={() => {}}>
+        <RectButton style={styles.contactButtonWhatsApp} onPress={() => {}}>
           <FontAwesome name="whatsapp" size={24} color="#FFF" />
-          <Text style={styles.contactButtonText}>Entrar em contato</Text>
+          <Text style={styles.contactButtonText}>WhatsApp</Text>
+        </RectButton>
+
+        <RectButton style={styles.contactButtonFacebook} onPress={() => {}}>
+          <FontAwesome name="facebook" size={24} color="#FFF" />
+          <Text style={styles.contactButtonText}>Facebook</Text>
         </RectButton>
       </View>
     </ScrollView>
@@ -178,7 +183,7 @@ const styles = StyleSheet.create({
     color: '#37C77F'
   },
 
-  contactButton: {
+  contactButtonWhatsApp: {
     backgroundColor: '#3CDC8C',
     borderRadius: 20,
     flexDirection: 'row',
@@ -188,10 +193,20 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
 
+  contactButtonFacebook: {
+    backgroundColor: '#0b84ed',
+    borderRadius: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 56,
+    marginTop: 10,
+  },
+
   contactButtonText: {
     fontFamily: 'Nunito_800ExtraBold',
     color: '#FFF',
-    fontSize: 16,
+    fontSize: 18,
     marginLeft: 16,
   }
 })
