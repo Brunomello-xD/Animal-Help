@@ -18,7 +18,7 @@ export default function ListOng() {
   }
 
   function handleNavigateToDetailOng() {
-    navigation.navigate("DetailOng");
+    navigation.navigate("OngDetails");
   }
 
   function handleNavigateToRegistrationOng() {
