@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 import mapMarkerImg from '../images/map-marker.png';
 import { RectButton } from 'react-native-gesture-handler';

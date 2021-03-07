@@ -22,7 +22,7 @@ export default function FirstPage() {
   return (
     <View style={styles.container}>
       <View style={styles.viewGuest}>
-        <Text style={styles.textAnimal}>Welcome</Text>
+        <Text style={styles.textAnimal}>Bem-vindo(a)!</Text>
 
         <TouchableOpacity onPress={handleNavigateToGuestMapView}>
           <FontAwesome5 name="chevron-right" size={24} color="#3f3d56" />
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
   },
 
   viewGuest: {
-
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

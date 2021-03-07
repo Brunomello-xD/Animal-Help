@@ -6,9 +6,14 @@ import { RectButton } from 'react-native-gesture-handler';
 export default function RegistrationOng() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 24 }}>
-      <Text style={styles.title}>Dados</Text>
+      <Text style={styles.title}>Dados da ONG</Text>
 
       <Text style={styles.label}>Nome</Text>
+      <TextInput
+        style={styles.input}
+      />
+
+      <Text style={styles.label}>CEP</Text>
       <TextInput
         style={styles.input}
       />
@@ -22,6 +27,7 @@ export default function RegistrationOng() {
       <TextInput keyboardType="numeric"
         style={styles.input}
       />
+      
 
       <Text style={styles.label}>Sobre</Text>
       <TextInput
@@ -47,8 +53,8 @@ export default function RegistrationOng() {
         multiline
       />
 
-      <Text style={styles.label}>Horario de visitas</Text>
-      <TextInput
+      <Text style={styles.label}>Horário de visitas</Text>
+      <TextInput placeholder="Ex: Segunda à Sexta 8h às 18h"
         style={styles.input}
       />
 
