@@ -20,6 +20,7 @@ export default function RegistrationPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const navigation = useNavigation();
 
@@ -29,6 +30,21 @@ export default function RegistrationPage() {
 
   function handleNavigateToLoginPage() {
     navigation.navigate("LoginPage");
+  }
+
+  function clickOnRegister() {
+    if (name === "") {
+      alert("Prencha o campo Nome")
+    }
+
+    if (email === "") {
+      alert("Prencha o campo E-mail")
+    }
+
+    if (password !== passwordRepeat) {
+      alert("Senha errada otário")
+    }
+
   }
 
   return (
@@ -69,7 +85,7 @@ export default function RegistrationPage() {
         <Input
           style={styles.input}
           onChangeText={(password) => setPassword(password)}
-          placeholder=" Password"
+          placeholder=" Senha"
           autoCorrect={false}
           autoCapitalize="none"
           secureTextEntry={visible ? false : true}
@@ -86,7 +102,18 @@ export default function RegistrationPage() {
           }
         />
 
-        <TouchableOpacity style={styles.buttonSignUp} onPress={() => {}}>
+        <Input
+          style={styles.input}
+          onChangeText={(passwordRepeat) => setPasswordRepeat(passwordRepeat)}
+          placeholder=" Repita a senha"
+          autoCorrect={false}
+          autoCapitalize="none"
+          secureTextEntry={visible ? false : true}
+          multiline={false}
+          leftIcon={<Feather name="lock" size={18} color="#3f3d56" />}
+        />
+
+        <TouchableOpacity style={styles.buttonSignUp} onPress={clickOnRegister}>
           <Text style={styles.textButtonSignUp}>Cadastrar</Text>
         </TouchableOpacity>
 
@@ -112,7 +139,7 @@ const styles = StyleSheet.create({
 
   viewMain: {
     maxHeight: windowHeight,
-    marginTop: Constants.statusBarHeight + 12,
+    marginTop: Constants.statusBarHeight,
   },
 
   buttonGoBack: {
@@ -130,7 +157,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: "#00bfa6",
 
-    marginBottom: 62,
+    marginBottom: 52,
   },
 
   input: {
