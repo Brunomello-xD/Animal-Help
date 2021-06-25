@@ -5,6 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
 
+import OnboardingTest from './pages/Onboarding/onboarding';
+
 import FirstPage from "./pages/FirstPage";
 import LoginPage from "./pages/CreateAccount/LoginPage";
 import RegistrationPage from "./pages/CreateAccount/RegistrationPage";
@@ -26,6 +28,8 @@ export default function Routes() {
           cardStyle: { backgroundColor: "#f2f3f5" },
         }}
       >
+        <Screen name="OnboardingTest" component={OnboardingTest} />
+
         <Screen name="FirstPage" component={FirstPage} />
         <Screen name="LoginPage" component={LoginPage} />
         <Screen name="RegistrationPage" component={RegistrationPage} />
