@@ -16,19 +16,19 @@ export default function OnboardingTest() {
       pages={[
         {
           backgroundColor: '#f2f4f5',
-          image: <Image source={require('./images/superhero.png')} />,
-          title: 'Leve\nfelicidade\npara o\nmundo',
+          image: <Image source={require('./images/happy_world.png')} />,
+          title: 'Leve felicidade \npara o mundo',
           titleStyles: {
             textAlign: 'left',
             fontFamily: "Nunito_800ExtraBold",
             fontSize: 40,
             color: "#3f3d56"
           },
-          subtitle: 'Adote e salve uma vida ou ajuda nossas ONGs parceiras',
+          subtitle: 'Adote e salve uma vida,ou ajude\n nossas ONGs parceiras!',
           subTitleStyles: {
             textAlign: 'left',
-            fontFamily: "Nunito_700Bold",
-            fontSize: 22,
+            fontFamily: "Nunito_400Regular",
+            fontSize: 20,
             color: "#3f3d56"
           }
         },
