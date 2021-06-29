@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import Constants from "expo-constants";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+
+const windowHeight = Dimensions.get("window").height;
 
 export default function FirstPage() {
   const navigation = useNavigation();
@@ -59,10 +61,12 @@ const styles = StyleSheet.create({
     flex: 1,
 
     marginHorizontal: 24,
-    marginTop: Constants.statusBarHeight + 12,
   },
 
   viewGuest: {
+    marginTop: Constants.statusBarHeight + 24,
+    marginBottom: windowHeight / 10,
+
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

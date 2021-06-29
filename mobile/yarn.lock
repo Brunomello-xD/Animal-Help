@@ -4615,7 +4615,7 @@
   dependencies:
     "asap" "~2.0.6"
 
-"prop-types@*", "prop-types@^15.0 || ^16.0", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
+"prop-types@^15.0 || ^16.0", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -4689,6 +4689,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz"
   "version" "17.0.1"
 
+"react-native-app-intro-slider@^4.0.4":
+  "integrity" "sha512-Zkjaol6X3BbZkHUpVDj2LjdidpS6rCgKi0fx80xgGKa0pHxBRd4swWTv2bHnnvu5k1/HXwYk0mY2TbK+2jHl5w=="
+  "resolved" "https://registry.npmjs.org/react-native-app-intro-slider/-/react-native-app-intro-slider-4.0.4.tgz"
+  "version" "4.0.4"
+
 "react-native-elements@^3.0.1":
   "integrity" "sha512-m0eAWOn7JuR1wNTNY0WHuaqst4LI/gFE4N5Bbyfsc4DiryWsMST7aAg5w/Gos4IexWIzhLKCIkPxthND1m/8Xg=="
   "resolved" "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.2.tgz"
@@ -4722,13 +4727,6 @@
   "integrity" "sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw=="
   "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-0.27.1.tgz"
   "version" "0.27.1"
-
-"react-native-onboarding-swiper@^1.1.4":
-  "integrity" "sha512-dG2J6giQpt5kKlU+Xe68E9xy+OkmC9Yf5XD7S1mJQ5VvwySfCIXnPojai0PEQ9NmbbH06k9lqN5Ik1PGYnIdVA=="
-  "resolved" "https://registry.npmjs.org/react-native-onboarding-swiper/-/react-native-onboarding-swiper-1.1.4.tgz"
-  "version" "1.1.4"
-  dependencies:
-    "tinycolor2" "^1.4.1"
 
 "react-native-ratings@8.0.4":
   "integrity" "sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A=="
@@ -5477,11 +5475,6 @@
   "integrity" "sha1-JaZ/LG4lOyypQZd7XvdELvl6YEY="
   "resolved" "https://registry.npmjs.org/tiny-queue/-/tiny-queue-0.2.1.tgz"
   "version" "0.2.1"
-
-"tinycolor2@^1.4.1":
-  "integrity" "sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA=="
-  "resolved" "https://registry.npmjs.org/tinycolor2/-/tinycolor2-1.4.2.tgz"
-  "version" "1.4.2"
 
 "tmp@^0.0.33":
   "integrity" "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw=="
