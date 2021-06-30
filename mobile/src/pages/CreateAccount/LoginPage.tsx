@@ -96,7 +96,7 @@ export default function LoginPage() {
         </TouchableOpacity>
 
         <View style={styles.viewOr}>
-          <Text style={styles.textOr}>or</Text>
+          <Text style={styles.textOr}>ou</Text>
         </View>
 
         <TouchableOpacity

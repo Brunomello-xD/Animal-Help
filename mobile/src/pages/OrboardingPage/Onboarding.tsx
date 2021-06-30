@@ -14,7 +14,7 @@ import Constants from "expo-constants";
 const slides = [
   {
     key: '1',
-    text: 'Conheça nossas ONGs\ne protetores parceiros',
+    text: 'Conheça nossas ONGs\ne protetores parceiros.',
     title: 'Leve\nfelicidade para\no mundo',
     image: require('./images/world.png'),
     backgroundColor: '#f2f4f5',
@@ -22,14 +22,14 @@ const slides = [
   {
     key: '2',
     title: 'Super-heroína',
-    text: 'Adote um anjo e salve uma\n vida, seja uma super-heroína',
+    text: 'Adote um anjo e salve\numa vida, seja uma super-heroína',
     image: require('./images/superwoman.png'),
     backgroundColor: '#f2f4f5',
   },
   {
     key: '3',
     title: 'Super-herói',
-    text: 'Text',
+    text: '... ou um super-herói!\nFaça a diferença para \neles, ame e seja amado.',
     image: require('./images/superhero.png'),
     backgroundColor: '#f2f4f5',
   },
@@ -64,25 +64,25 @@ const OnboardingPage = () => {
 
   const RenderItem = ({ item }: { item: any }) => {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: item.backgroundColor,
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          paddingBottom: 100,
-          paddingHorizontal: 12,
-          marginTop: Constants.statusBarHeight + 24,
-        }}>
-        <Text style={styles.introTitleStyle}>
-          {item.title}
-        </Text>
-        <Image
-          source={item.image} />
-        <Text style={styles.introTextStyle}>
-          {item.text}
-        </Text>
-      </View>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: item.backgroundColor,
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            paddingBottom: 100,
+            paddingHorizontal: 12,
+            marginTop: Constants.statusBarHeight + 24,
+          }}>
+          <Text style={styles.introTitleStyle}>
+            {item.title}
+          </Text>
+          <Image
+            source={item.image} />
+          <Text style={styles.introTextStyle}>
+            {item.text}
+          </Text>
+        </View>
     );
   };
 
@@ -128,33 +128,19 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
   },
-  titleStyle: {
-    padding: 10,
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  paragraphStyle: {
-    padding: 20,
-    textAlign: 'center',
-    fontSize: 16,
-  },
   introTextStyle: {
     fontSize: 28,
     color: '#3f3d56',
-    textAlign: 'center',
-    paddingVertical: 30,
+    textAlign: 'left',
+    paddingVertical: 32,
+    fontFamily: "Nunito_600SemiBold"
   },
   introTitleStyle: {
     fontSize: 42,
     color: '#3f3d56',
     textAlign: 'left',
     marginBottom: 16,
-    fontWeight: 'bold',
-    marginHorizontal: 12
-  },
-  buttonCircle: {
-    width: 50,
-    height: 50
+    marginHorizontal: 12,
+    fontFamily: "Nunito_800ExtraBold",
   }
 });
