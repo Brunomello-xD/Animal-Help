@@ -3,12 +3,16 @@ import { getRepository } from "typeorm";
 
 import { Users } from "../models/Users";
 
-export class CreateUserController {
+class CreateUserController {
+  index(req: Request, res: Response) {
+    return res.send({ userID: req.userId });
+  }
+
   async handle(req: Request, res: Response) {
     const repository = getRepository(Users);
     const { email, password } = req.body;
 
-    const userExists = await repository.findOne({where : { email }});
+    const userExists = await repository.findOne({ where : { email }});
 
     if (userExists) {
       return res.sendStatus(409);
@@ -20,3 +24,5 @@ export class CreateUserController {
     return res.json(user);
   }
 }
+
+export default new CreateUserController();

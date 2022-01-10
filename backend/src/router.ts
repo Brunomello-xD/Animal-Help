@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { CreateUserController } from "./controllers/CreateUserController";
+
+import authMiddleware from './middlewares/authMiddleware';
+
+import CreateUserController from "./controllers/CreateUserController";
+import AuthController from "./controllers/AuthController";
 
 const routes = Router();
 
@@ -10,6 +14,9 @@ const routes = Router();
  * // D - DELETE - DELETE
  */
 
-routes.post("/users", new CreateUserController().handle)
+routes.post("/users", CreateUserController.handle);
+routes.post("/auth", AuthController.antheticate);
+
+routes.get("/users", authMiddleware, CreateUserController.index);
 
 export { routes };
