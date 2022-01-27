@@ -4,16 +4,16 @@ import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-dotenv.config();
-
 import { Users } from "../models/Users";
+
+dotenv.config();
 
 class AuthController {
   async antheticate(req: Request, res: Response) {
     const repository = getRepository(Users);
     const { email, password } = req.body;
 
-    const user = await repository.findOne({where : { email }});
+    const user = await repository.findOne({where : { email }});    
 
     // Verificando se o e-mail foi encontrado
     if(!user) {
