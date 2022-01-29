@@ -1,5 +1,9 @@
 import { Router } from "express";
+import multer from 'multer';
 
+import uploadConfig from './config/upload';
+
+// Rotas
 import authMiddleware from './middlewares/authMiddleware';
 
 import CreateUserController from "./controllers/CreateUserController";
@@ -10,6 +14,8 @@ import GetAllOngsController from "./controllers/GetAllOngsController";
 import GetOngController from "./controllers/GetOngController";
 
 const routes = Router();
+//Configurações do Multer para realizar o upload das imagens
+const upload = multer(uploadConfig)
 
 /**
  * // C - CREATE - POST
@@ -29,7 +35,7 @@ routes.post("/auth", AuthController.antheticate);
 
 routes.get("/users", authMiddleware, CreateUserController.index);
 
-routes.post("/ongs", CreateOngController.handle)
+routes.post("/ongs", upload.array('images') , CreateOngController.create)
 routes.get("/ongs", GetAllOngsController.handle)
 routes.get("/ongs/:id", GetOngController.show)
 

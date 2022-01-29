@@ -1,7 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from "typeorm";
+
+import Image from './Images';
 
 @Entity('ongs')
-export class Ongs {
+export default class Ongs {
   @PrimaryGeneratedColumn('increment')
   id: Number;
 
@@ -25,5 +27,11 @@ export class Ongs {
 
   @Column()
   open_on_weekends: boolean;
+
+  @OneToMany(() => Image, image => image.ong, {
+    cascade:['insert', 'update']
+  })
+  @JoinColumn({ name: 'ong_id'})
+  images: Image[];
 
 }
