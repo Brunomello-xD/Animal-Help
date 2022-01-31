@@ -4,17 +4,32 @@ import Image from './Images';
 
 @Entity('ongs')
 export default class Ongs {
+  to(data: number): number {
+    return data;
+  }
+  from(data: string): number {
+    return parseFloat(data);
+  }
+
   @PrimaryGeneratedColumn('increment')
   id: Number;
 
   @Column()
   name: string;
 
-  @Column()
-  latitude: Number;
+  @Column('numeric', {
+    scale: 10,
+    precision: 2,
+    transformer: new Ongs()
+  })
+  public latitude: Number;
 
-  @Column()
-  longitude: Number;
+  @Column('numeric', {
+    scale: 10,
+    precision: 2,
+    transformer: new Ongs()
+  })
+  public longitude: Number;
 
   @Column()
   about: string;
@@ -28,6 +43,11 @@ export default class Ongs {
   @Column()
   open_on_weekends: boolean;
 
+  /**
+   * Campo não existe no BD, é somente para realizar o relacionamento
+   * 
+   * Após receber as imagens, qual o campo da imagem que vai ter as ong (será o campo ong)
+   */
   @OneToMany(() => Image, image => image.ong, {
     cascade:['insert', 'update']
   })

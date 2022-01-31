@@ -68,7 +68,7 @@ export default function LoginPage() {
         <Input
           style={styles.input}
           onChangeText={(password) => setPassword(password)}
-          placeholder=" Password"
+          placeholder=" Senha"
           autoCorrect={false}
           autoCapitalize="none"
           secureTextEntry={visible ? false : true}
@@ -92,7 +92,7 @@ export default function LoginPage() {
         </View>
 
         <TouchableOpacity style={styles.buttonLogin} onPress={justATeste}>
-          <Text style={styles.textButtonLogin}>Log in</Text>
+          <Text style={styles.textButtonLogin}>Entrar</Text>
         </TouchableOpacity>
 
         <View style={styles.viewOr}>

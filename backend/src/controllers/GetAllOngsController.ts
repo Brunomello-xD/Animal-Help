@@ -15,7 +15,7 @@ class GetAllOngsController {
      */
     const ongs = await repository.find({ 
       relations: ['images']
-    });
+    });    
 
     return res.json(ongView.renderMany(ongs));
   }

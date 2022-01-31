@@ -11,11 +11,11 @@ interface TokenPayload {
 }
 
 export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
-
+  //Recebendo o Token
   const { authorization } = req.headers;
 
   if(!authorization) {
-    return res.sendStatus(401);
+    return res.status(401).send({error: 'No token provided'});
   }
 
   const token = authorization.replace('Bearer', '').trim();

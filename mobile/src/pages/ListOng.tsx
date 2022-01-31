@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -10,15 +10,27 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 
+import api from '../services/api';
+
+type Ong = {
+  id: number;
+  name: string;
+  opening_hours: string;
+}
+
 export default function ListOng() {
   const navigation = useNavigation();
 
-  function handleNavigateToGoBack() {
-    navigation.goBack();
-  }
+  const [ongs, setOngs] = useState<Ong[]>([]);
 
-  function handleNavigateToDetailOng() {
-    navigation.navigate("OngDetails");
+  useEffect(() => {
+    api.get('ongs').then(response  => {
+      setOngs(response.data)
+    })
+  }, [])
+
+  function handleNavigateToDetailOng(id: number) {
+    navigation.navigate("OngDetails", { id });
   }
 
   function handleNavigateToRegistrationOng() {
@@ -27,37 +39,29 @@ export default function ListOng() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.viewHeader}>
-        <TouchableOpacity onPress={handleNavigateToGoBack}>
-          <FontAwesome5 name="chevron-left" size={24} color="#3f3d56" />
-        </TouchableOpacity>
-
-        <Text style={styles.textTitleOng}>ONGs parceiras</Text>
-      </View>
-
       <Text style={styles.textDescription}>
         Escolha umas das ONGs abaixo e ajude nossos heróis.
       </Text>
 
       <FlatList
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}
+        data={ongs}
         style={styles.flatListDetails}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(ongs) => String(ongs)}
-        renderItem={() => (
+        keyExtractor={(ongs) => String(ongs.id)}
+        renderItem={({ item: ongs }) => (
           <View style={styles.viewFlatList}>
-            <Text style={styles.textNameOng}>Francisco de Assis</Text>
+            <Text style={styles.textNameOng}>{ongs.name}</Text>
 
             <View style={styles.viewHourOperating}>
               <Text style={styles.textDescriptionHourOng}>
                 Horário:
               </Text>
-              <Text style={styles.textHour}>8 às 18 horas</Text>
+              <Text style={styles.textHour}>{ongs.opening_hours}</Text>
             </View>
 
             <TouchableOpacity
               style={styles.ButtonGoToOng}
-              onPress={handleNavigateToDetailOng}
+              onPress={() => handleNavigateToDetailOng(ongs.id)}
             >
               <Text style={styles.textButtonGoToOng}>Ver mais detalhes</Text>
               <FontAwesome5 name="paw" size={16} color="#3f3d56" />
@@ -104,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#3f3d56",
 
-    marginTop: 18,
+    //marginTop: 10,
   },
 
   flatListDetails: {

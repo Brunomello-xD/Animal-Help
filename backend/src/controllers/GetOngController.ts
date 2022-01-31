@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
+import { getRepository } from "typeorm";
 
-import { getOngMiddleware } from '../middlewares/getOngMiddleware';
+import Ongs from "../models/Ongs";
 
 import ongView from '../views/ongView';
 
@@ -8,15 +9,22 @@ class getOngController{
   async show(req: Request, res: Response) {
     const { id } = req.params;
 
-    const middleware = new getOngMiddleware();
+    //const middleware = new getOngMiddleware();
 
-    const result = await middleware.execute(id);    
+    const repository = getRepository(Ongs);
 
-    if (result instanceof Error) {
-      return res.status(400).json(result.message);
-    }
+      /**
+       * relations: ['images']
+       * Para retornas as imagens cadastradas
+       */
 
-    return res.json(ongView.render(result));
+    const ong = await repository.findOneOrFail(id, { relations: ['images']});
+
+     if (!ong) {
+      return new Error("Ong does not exists!");
+    }   
+
+    return res.json(ongView.render(ong));
   }
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Dimensions, Text, StatusBar } from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -7,20 +7,36 @@ import { useNavigation } from "@react-navigation/native";
 
 import mapMarker from "../images/map-marker.png";
 
-export default function MapScreen() {
-  const navigation = useNavigation();
+import api from "../services/api";
 
-  function handleNavigateToRegistrationOng() {
-    navigation.navigate("RegistrationOng");
+type Ong = {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
+export default function MapScreen() {
+  const [ongs, setOngs] = useState<Ong[]>([]);
+  const navigation = useNavigation();
+  
+  useEffect(() => {
+    api.get('ongs').then(response  => {
+      setOngs(response.data)
+    })
+  }, [])
+
+  function handleNavigateToDetailOng(id: number) {
+    navigation.navigate("OngDetails", { id });
   }
 
-  function handleNavigateToDetailOng() {
-    navigation.navigate("OngDetails");
+  function handleNavigateSelectMapPosition() {
+    navigation.navigate("SelectMapPosition");
   }
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden={true} />
+      <StatusBar />
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
@@ -31,28 +47,34 @@ export default function MapScreen() {
           longitudeDelta: 0.008,
         }}
       >
-        <Marker
-          icon={mapMarker}
-          coordinate={{
-            latitude: -21.467042,
-            longitude: -47.0071137,
-          }}
-        >
-          <Callout 
-            tooltip 
-            onPress={handleNavigateToDetailOng}
-          >
-            <View style={styles.calloutContainer}>
-              <Text style={styles.calloutText}>Francisco de Assis</Text>
-            </View>
-          </Callout>
-        </Marker>
-      </MapView>
+        {ongs.map(ong => {
+          return(
+            <Marker
+              key={ong.id}
+              icon={mapMarker}
+              coordinate={{
+                latitude: ong.latitude,
+                longitude: ong.longitude,
+              }}
+            >
+              <Callout 
+                tooltip 
+                onPress={() => handleNavigateToDetailOng(ong.id)}
+              >
+                <View style={styles.calloutContainer}>
+                  <Text style={styles.calloutText}>{ong.name}</Text>
+                </View>
+              </Callout>
+            </Marker>
+          )
+        })}
+        
+      </MapView>      
 
       <View style={styles.viewButtonCreateOng}>
         <RectButton
           style={styles.moreOng}
-          onPress={handleNavigateToRegistrationOng}
+          onPress={handleNavigateSelectMapPosition}
         >
           <FontAwesome5 name="plus" size={20} color="#FFF" />
         </RectButton>

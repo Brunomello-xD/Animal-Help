@@ -42,8 +42,22 @@ export class CreateOngs1643080723737 implements MigrationInterface {
                 name: 'open_on_weekends',
                 type: 'boolean',
                 default: false,
+              },
+              {
+                name: 'user_id',
+                type: 'uuid'
               }
             ],
+            foreignKeys: [
+              {
+                name: 'ongUser',
+                columnNames: ['user_id'],
+                referencedTableName: 'users',
+                referencedColumnNames: ['id'],
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE',
+              }
+            ]
           }))  
     }
 

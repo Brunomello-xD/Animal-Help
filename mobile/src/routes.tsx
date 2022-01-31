@@ -13,8 +13,10 @@ import RegistrationPage from "./pages/CreateAccount/RegistrationPage";
 import ForgotPasswordPage from "./pages/CreateAccount/ForgotPasswordPage";
 import MapScreen from "./pages/MapScreen";
 import ListOng from "./pages/ListOng";
-import RegistrationOng from "./pages/CreateAccount/RegistrationOng";
+import RegistrationOng from "./pages/CreateOng/RegistrationOng";
 import OngDetails from './pages/OngDetails';
+
+import SelectMapPosition from './pages/CreateOng/SelectMapPosition';
 
 import Header from "./components/Header";
 
@@ -39,12 +41,33 @@ export default function Routes() {
           component={MapScreen}
           options={{
             headerShown: true,
-            header: () => <Header title="Mapa ONGs" isMap={true} />,
+            header: () => <Header title="Mapa ONG's" isMap={true} />,
           }}
         />
-        <Screen name="ListOng" component={ListOng} />
-        <Screen name="RegistrationOng" component={RegistrationOng} />
-        <Screen name="OngDetails" component={OngDetails} />
+        <Screen name="ListOng" component={ListOng} 
+          options={{
+            headerShown: true,
+            header: () => <Header showCancel={false} title="Lista de ONG's" isMap={false} />,
+          }}
+        />
+        <Screen name="RegistrationOng" component={RegistrationOng} 
+          options={{
+            headerShown: true,
+            header: () => <Header title="Informe os dados" isMap={false} />,
+          }}
+        />
+        <Screen name="OngDetails" component={OngDetails} 
+          options={{
+            headerShown: true,
+            header: () => <Header showCancel={false} title="Conheça a ONG" isMap={false} />,
+          }}
+        />
+        <Screen name="SelectMapPosition" component={SelectMapPosition} 
+          options={{
+            headerShown: true,
+            header: () => <Header title="Selecione no mapa" isMap={false} />,
+          }}
+        />
       </Navigator>
     </NavigationContainer>
   );

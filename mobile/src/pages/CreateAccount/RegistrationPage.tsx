@@ -125,7 +125,7 @@ export default function RegistrationPage() {
           style={styles.buttonLogin}
           onPress={handleNavigateToLoginPage}
         >
-          <Text style={styles.textButtonLogin}>Log in</Text>
+          <Text style={styles.textButtonLogin}>Entrar</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

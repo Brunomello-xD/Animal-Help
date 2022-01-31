@@ -7,9 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 interface HeaderProps {
   title: string;
   isMap?: boolean;
+  showCancel?: boolean;
 }
 
-export default function HeaderMap({ title, isMap }: HeaderProps) {
+export default function HeaderMap({ title, isMap, showCancel = true }: HeaderProps) {
   const navigation = useNavigation();
 
   function handleNavigateToListOng() {
@@ -19,19 +20,21 @@ export default function HeaderMap({ title, isMap }: HeaderProps) {
   return (
     <View style={styles.container}>
       <BorderlessButton onPress={navigation.goBack}>
-        <Feather name="arrow-left" size={24} color="#3f3d56" />
+        <Feather name="chevron-left" size={24} color="#3f3d56" />
       </BorderlessButton>
 
       <Text style={styles.title}>{title}</Text>
 
       {isMap ? (
         <BorderlessButton onPress={handleNavigateToListOng}>
-          <Feather name="list" size={24} color="#3f3d56" />
+          <Feather name="more-horizontal" size={24} color="#3f3d56" />
         </BorderlessButton>
-      ) : (
-        <BorderlessButton onPress={() => {}}>
-          <Feather name="plus" size={24} color="#3f3d56" />
+      ) : showCancel ? (
+        <BorderlessButton onPress={navigation.goBack}>
+          <Feather name="x" size={24} color="#FF669D" />
         </BorderlessButton>
+      ) :(
+        <View />
       )}
     </View>
   );
@@ -49,6 +52,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  containerList: {
+    padding: 22,
+    borderBottomWidth: 1,
+    borderColor: "#dde3f0",
+    paddingTop: 22,
+
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }
+  ,
 
   title: {
     fontFamily: "Nunito_600SemiBold",

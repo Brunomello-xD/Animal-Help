@@ -1,31 +1,82 @@
-import React from 'react';
-import { Image, View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, View, ScrollView, Text, StyleSheet, Dimensions, TouchableOpacity, Linking } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { Feather, FontAwesome } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
 import mapMarkerImg from '../images/map-marker.png';
 import { RectButton } from 'react-native-gesture-handler';
 
-export default function OrphanageDetails() {
+import api from '../services/api';
+
+type OngDetailsRouteParams = {
+  id: number;
+}
+
+type Ong = {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+  about: string;
+  instructions: string;
+  opening_hours: string;
+  open_on_weekends: boolean;
+  image: Array<{
+    id: number;
+    url: string;
+  }>;
+}
+
+export default function OngDetails() {
+  const route = useRoute();
+  const [ong, setOng] = useState<Ong>();
+  
+  const params = route.params as OngDetailsRouteParams;
+
+  useEffect(() => {
+    api.get(`ongs/${params.id}`).then(response => {
+      setOng(response.data);
+    })
+  },[params.id])
+
+  if(!ong) {
+    return(
+      <View style={styles.container}>
+        <Text style={styles.description} >Carregando...</Text>
+      </View>
+    )
+  }
+
+  function handleOpenGoogleMapsRoutes() {
+    Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${ong?.latitude},${ong?.longitude}`)
+  }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imagesContainer}>
         <ScrollView horizontal pagingEnabled>
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
+          {ong.image.map(image => {
+            return (
+              <Image 
+                key={image.id} 
+                style={styles.image} 
+                source={{ uri: image.url }} />
+            )
+          })}
+          
         </ScrollView>
       </View>
 
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Associação São Francisco de Assis</Text>
-        <Text style={styles.description}>Somos uma Associação sem fins lucrativos, formada somente por voluntários, em prol da causa animal na cidade de Mococa-SP.</Text>
+        <Text style={styles.title}>{ong.name}</Text>
+        <Text style={styles.description}>{ong.about}</Text>
       
         <View style={styles.mapContainer}>
           <MapView 
             initialRegion={{
-              latitude: -27.2092052,
-              longitude: -49.6401092,
+              latitude: ong.latitude,
+              longitude: ong.longitude,
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }} 
@@ -38,31 +89,41 @@ export default function OrphanageDetails() {
             <Marker 
               icon={mapMarkerImg}
               coordinate={{ 
-                latitude: -27.2092052,
-                longitude: -49.6401092
+                latitude: ong.latitude,
+                longitude: ong.longitude,
               }}
             />
           </MapView>
 
-          <View style={styles.routesContainer}>
+          <TouchableOpacity onPress={handleOpenGoogleMapsRoutes} style={styles.routesContainer}>
             <Text style={styles.routesText}>Ver rotas no Google Maps</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instruções para visita</Text>
-        <Text style={styles.description}>Venha como se sentir a vontade e traga muito amor e paciência para dar.</Text>
+        <Text style={styles.description}>{ong.instructions}</Text>
 
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
             <Feather name="clock" size={40} color="#2AB5D1" />
-            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à Sexta 8h às 18h</Text>
+            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à Sexta {ong.opening_hours}</Text>
           </View>
-          <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
-            <Feather name="info" size={40} color="#39CC83" />
+
+          {ong.open_on_weekends ? (
+            <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
+              <Feather name="info" size={40} color="#39CC83" />
             <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Atendemos fim de semana</Text>
           </View>
+          ) : (
+            <View style={[styles.scheduleItem, styles.scheduleItemRed]}>
+              <Feather name="info" size={40} color="#FF669D" />
+            <Text style={[styles.scheduleText, styles.scheduleTextRed]}>Não atendemos fim de semana</Text>
+          </View>
+          )
+
+          }
         </View>
 
         <RectButton style={styles.contactButtonWhatsApp} onPress={() => {}}>
@@ -168,6 +229,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
 
+  scheduleItemRed: {
+    backgroundColor: '#FEF6F9',
+    borderWidth: 1,
+    borderColor: '#FFBCD4',
+    borderRadius: 20,
+  },
+
   scheduleText: {
     fontFamily: 'Nunito_600SemiBold',
     fontSize: 16,
@@ -181,6 +249,10 @@ const styles = StyleSheet.create({
 
   scheduleTextGreen: {
     color: '#37C77F'
+  },
+
+  scheduleTextRed: {
+    color: '#FF669D'
   },
 
   contactButtonWhatsApp: {

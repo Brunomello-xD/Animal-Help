@@ -36,9 +36,9 @@ class CreateOngController {
       about,
       instructions, 
       opening_hours,
-      open_on_weekends, 
+      open_on_weekends: open_on_weekends === 'true', 
       images
-    };
+    }; 
 
     // Regras de validação de dados recebidos com Yup
     const schema = Yup.object().shape({
@@ -50,10 +50,7 @@ class CreateOngController {
       opening_hours: Yup.string().required(),
       open_on_weekends: Yup.boolean().required(),
       images: Yup.array(
-        /**
-         * shape para informar o formato do objeto
-         */
-        Yup.object().shape({
+                Yup.object().shape({
           path: Yup.string().required()
         })
       )
@@ -65,16 +62,16 @@ class CreateOngController {
      * abortEarly: false = Caso um campo estiver inválido ele não irá parar a verificação
      * Irá continuar e caso ouver mais erros irá retorna todos de uma vez
      */
+    
     await schema.validate(data, {
       abortEarly: false,
     })
 
-    const ong = repository.create(data) 
-
+    const ong = repository.create(data);    
+    
     await repository.save(ong);
 
     return res.status(201).json(ong);
-    
   }
 }
 

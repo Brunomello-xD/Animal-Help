@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   StyleSheet,
@@ -45,7 +45,7 @@ const OnboardingPage = () => {
   function stylesButtonNext() {
     return (
       <Ionicons
-        name="arrow-forward-outline"
+        name="chevron-forward-outline"
         color="#3f3d56"
         size={30}
       />
@@ -54,11 +54,10 @@ const OnboardingPage = () => {
 
   function stylesButtonDone() {
     return (
-      <Ionicons
-        name="checkmark-done-outline"
-        color="#3f3d56"
-        size={30}
-      />
+      <Ionicons 
+        name="checkmark-outline" 
+        color="#3f3d56" 
+        size={30} />
     );
   };
 
@@ -93,7 +92,6 @@ const OnboardingPage = () => {
         renderItem={RenderItem}
         onDone={handleNavigateToFirstPage}
         showSkipButton={false}
-        onSkip={handleNavigateToFirstPage}
 
         dotStyle={{
           width: 20,
@@ -113,6 +111,7 @@ const OnboardingPage = () => {
 
         renderNextButton={stylesButtonNext}
         renderDoneButton={stylesButtonDone}
+        renderSkipButton={stylesButtonDone}
       />
     </>
   );
@@ -142,5 +141,5 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 12,
     fontFamily: "Nunito_800ExtraBold",
-  }
+  },
 });
