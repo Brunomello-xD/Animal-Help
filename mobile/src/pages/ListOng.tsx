@@ -33,8 +33,8 @@ export default function ListOng() {
     navigation.navigate("OngDetails", { id });
   }
 
-  function handleNavigateToRegistrationOng() {
-    navigation.navigate("RegistrationOng");
+  function handleNavigateSelectMapPosition() {
+    navigation.navigate("SelectMapPosition");
   }
 
   return (
@@ -74,7 +74,7 @@ export default function ListOng() {
       <View style={styles.viewButtonCreateOng}>
         <TouchableOpacity
           style={styles.moreOng}
-          onPress={handleNavigateToRegistrationOng}
+          onPress={handleNavigateSelectMapPosition}
         >
           <FontAwesome5 name="plus" size={20} color="#FFF" />
         </TouchableOpacity>

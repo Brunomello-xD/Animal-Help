@@ -6,72 +6,81 @@ import Ongs from "../models/Ongs";
 
 class CreateOngController {
   async create(req: Request, res: Response) {
-    // Recebendo os dados
-    const { 
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions, 
-      opening_hours,
-      open_on_weekends
-    } = req.body;
+    try {
+      // Recebendo os dados
+      const { 
+        name,
+        latitude,
+        longitude,
+        about,
+        instructions, 
+        opening_hours,
+        open_on_weekends,
+      } = req.body;
 
-    const repository = getRepository(Ongs);
+      console.log(req.body); 
+      
+      const repository = getRepository(Ongs);
 
-    /**
-     * Recebendo as imagens
-     * Express.Multer.File[] = Passando que é um Array de arquivos do Multer
-     */
-    const requestImages = req.files as Express.Multer.File[];
-    // Percorrendo o Array caso ouver mais de uma imagem
-    const images = requestImages.map(image => {
-      return { path: image.filename}
-    })
+      /**
+       * Recebendo as imagens
+       * Express.Multer.File[] = Passando que é um Array de arquivos do Multer
+       */
+      const requestImages = req.files as Express.Multer.File[];
 
-    const data = {
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions, 
-      opening_hours,
-      open_on_weekends: open_on_weekends === 'true', 
-      images
-    }; 
+      console.log(requestImages);
+      
+      // Percorrendo o Array caso ouver mais de uma imagem
 
-    // Regras de validação de dados recebidos com Yup
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      latitude: Yup.number().required(),
-      longitude: Yup.number().required(),
-      about: Yup.string().required().max(300),
-      instructions: Yup.string().required(),
-      opening_hours: Yup.string().required(),
-      open_on_weekends: Yup.boolean().required(),
-      images: Yup.array(
-                Yup.object().shape({
-          path: Yup.string().required()
-        })
-      )
-    })
+      const images = requestImages.map(image => {
+        return { path: image.filename }
+      });
 
-    /**
-     * Começando a validar os dados
-     * 
-     * abortEarly: false = Caso um campo estiver inválido ele não irá parar a verificação
-     * Irá continuar e caso ouver mais erros irá retorna todos de uma vez
-     */
-    
-    await schema.validate(data, {
-      abortEarly: false,
-    })
+      const data = {
+        name,
+        latitude,
+        longitude,
+        about,
+        instructions, 
+        opening_hours,
+        open_on_weekends: open_on_weekends === 'true', 
+        images
+      };       
 
-    const ong = repository.create(data);    
-    
-    await repository.save(ong);
+      // Regras de validação de dados recebidos com Yup
+      const schema = Yup.object().shape({
+        name: Yup.string().required(),
+        latitude: Yup.number().required(),
+        longitude: Yup.number().required(),
+        about: Yup.string().required().max(300),
+        instructions: Yup.string().required(),
+        opening_hours: Yup.string().required(),
+        open_on_weekends: Yup.boolean().required(),
+        images: Yup.array(
+                  Yup.object().shape({
+            path: Yup.string().required()
+          })
+        )
+      })
 
-    return res.status(201).json(ong);
+      /**
+       * Começando a validar os dados
+       * 
+       * abortEarly: false = Caso um campo estiver inválido ele não irá parar a verificação
+       * Irá continuar e caso ouver mais erros irá retorna todos de uma vez
+       */
+      await schema.validate(data, {
+        abortEarly: false,
+      })
+
+      const ong = repository.create(data);    
+      
+      await repository.save(ong);      
+      
+      return res.status(201).json(ong);
+  } catch (error) {
+    console.log(error);
+  }
   }
 }
 

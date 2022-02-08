@@ -17,6 +17,7 @@ const app = express();
 app.use(cors());
 // Usando json
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 // Configurando para poder exibir as imagens
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));

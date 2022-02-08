@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: "#15c3d6",
+    backgroundColor: "#00bfa6",
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
