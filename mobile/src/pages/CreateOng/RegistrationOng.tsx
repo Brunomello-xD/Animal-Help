@@ -4,15 +4,15 @@ import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
+
 import api from '../../services/api';
-import axios from 'axios';
 
 type OngDataRouteParams = {
   position: {
     latitude: number;
     longitude: number;
   }
-} 
+}
 
 export default function RegistrationOng() {
   const [name, setName] = useState('');
@@ -45,26 +45,14 @@ export default function RegistrationOng() {
         type: 'image/jpg',
         uri: image,
       } as any)
-    })   
-
-    console.log('images --------------------------------')
-    console.log(images)
-
-    console.log('form --------------------------------')
-    console.log(data);
-    
+    })
 
     try {
-      // await api.post('ongs', data, {
-      //   headers: {
-      //     'Content-Type': `multipart/form-data;`
-      //   }
-      // });
-
-      await fetch('http://192.168.0.110:3000/ongs', {
-        method: 'POST',
-        body: data,
-      })
+      await api.post('ongs', data);
+      // await fetch('http://192.168.0.110:3000/ongs', {
+      //   method: 'POST',
+      //   body: data,
+      // })
     } catch (error) {
       console.log(error);
       return
@@ -232,6 +220,8 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#00bfa6',
     marginBottom: 32,
     marginRight: 8,
   },
@@ -247,8 +237,8 @@ const styles = StyleSheet.create({
     borderColor: '#00bfa6',
     borderWidth: 1.4,
     borderRadius: 10,
-    height: 56,
-    width: 56,
+    height: 64,
+    width: 64,
     justifyContent: 'center',
     alignItems: 'center',
     //marginBottom: 32,

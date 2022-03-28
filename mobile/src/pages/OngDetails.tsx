@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   },
 
   mapContainer: {
-    borderRadius: 20,
+    borderRadius: 10,
     overflow: 'hidden',
     borderWidth: 1.2,
     borderColor: '#B3DAE2',
@@ -219,14 +219,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#E6F7FB',
     borderWidth: 1,
     borderColor: '#B3DAE2',
-    borderRadius: 20,
+    borderRadius: 10,
   },
 
   scheduleItemGreen: {
     backgroundColor: '#EDFFF6',
     borderWidth: 1,
     borderColor: '#A1E9C5',
-    borderRadius: 20,
+    borderRadius: 10,
   },
 
   scheduleItemRed: {
@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
 
   contactButtonWhatsApp: {
     backgroundColor: '#3CDC8C',
-    borderRadius: 20,
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
 
   contactButtonFacebook: {
     backgroundColor: '#0b84ed',
-    borderRadius: 20,
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

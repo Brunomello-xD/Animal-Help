@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 import MapView, { Marker, MapEvent } from 'react-native-maps';
 
 import mapMarkerImg from '../../images/map-marker.png';
 
+type Ong = {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
 export default function SelectMapPosition() {
   const navigation = useNavigation();
+
+  const markerColor = "#00bfa6";
 
   // Posição que o usuário seleciono no mapa
   const [position, setPosition] = useState({latitude: 0, longitude:0});
@@ -35,10 +43,12 @@ export default function SelectMapPosition() {
       >
         { position.latitude !== 0 && (
           <Marker 
-            icon={mapMarkerImg}
+            //icon={mapMarkerImg}
+            pinColor={markerColor}
             coordinate={{ latitude: position.latitude, longitude: position.longitude }}
           />
-        ) }
+          )
+        }
       </MapView>
 
       { position.latitude !== 0 && (
@@ -46,8 +56,6 @@ export default function SelectMapPosition() {
           <Text style={styles.nextButtonText}>Próximo</Text>
         </RectButton>
       )}
-
-      
     </View>
   )
 }

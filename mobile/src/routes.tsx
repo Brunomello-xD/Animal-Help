@@ -41,7 +41,7 @@ export default function Routes() {
           component={MapScreen}
           options={{
             headerShown: true,
-            header: () => <Header title="Mapa ONG's" isMap={true} />,
+            header: () => <Header title="Mapa de ONG's" isMap={true} />,
           }}
         />
         <Screen name="ListOng" component={ListOng} 

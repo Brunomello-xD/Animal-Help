@@ -67,8 +67,7 @@ export default function MapScreen() {
               </Callout>
             </Marker>
           )
-        })}
-        
+        })} 
       </MapView>      
 
       <View style={styles.viewButtonCreateOng}>
