@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
 
-import IntroSlider from './pages/OrboardingPage/Onboarding';
+import IntroSlider from './pages/Onboarding';
 
 import FirstPage from "./pages/FirstPage";
 import LoginPage from "./pages/CreateAccount/LoginPage";

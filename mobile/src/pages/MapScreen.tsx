@@ -134,6 +134,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
 
     position: "absolute",
-    bottom: 100,
+    bottom: 120,
   },
 });

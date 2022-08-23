@@ -1,3 +1,4 @@
+// Representação da tabela como uma classe
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from "typeorm";
 
 import Image from './Images';

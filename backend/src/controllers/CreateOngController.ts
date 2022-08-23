@@ -17,8 +17,6 @@ class CreateOngController {
         opening_hours,
         open_on_weekends,
       } = req.body;
-
-      console.log(req.body); 
       
       const repository = getRepository(Ongs);
 
@@ -31,7 +29,6 @@ class CreateOngController {
       console.log(requestImages);
       
       // Percorrendo o Array caso ouver mais de uma imagem
-
       const images = requestImages.map(image => {
         return { path: image.filename }
       });

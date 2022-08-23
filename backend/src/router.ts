@@ -5,7 +5,6 @@ import uploadConfig from './config/upload';
 
 // Rotas
 import authMiddleware from './middlewares/authMiddleware';
-
 import CreateUserController from "./controllers/CreateUserController";
 import AuthController from "./controllers/AuthController";
 

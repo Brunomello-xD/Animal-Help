@@ -16,21 +16,21 @@ const slides = [
     key: '1',
     text: 'Conheça nossas ONGs\ne protetores parceiros.',
     title: 'Leve\nfelicidade para\no mundo',
-    image: require('./images/world.png'),
+    image: require('../images/world.png'),
     backgroundColor: '#f2f4f5',
   },
   {
     key: '2',
     title: 'Super-heroína',
     text: 'Adote um anjo e salve\numa vida, seja uma super-heroína',
-    image: require('./images/superwoman.png'),
+    image: require('../images/superwoman.png'),
     backgroundColor: '#f2f4f5',
   },
   {
     key: '3',
     title: 'Super-herói',
     text: '... ou um super-herói!\nFaça a diferença para \neles, ame e seja amado.',
-    image: require('./images/superhero.png'),
+    image: require('../images/superhero.png'),
     backgroundColor: '#f2f4f5',
   },
 ];
@@ -55,7 +55,7 @@ const OnboardingPage = () => {
   function stylesButtonDone() {
     return (
       <Ionicons 
-        name="checkmark-outline" 
+        name="checkmark-done-outline" 
         color="#3f3d56" 
         size={30} />
     );

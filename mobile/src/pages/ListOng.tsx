@@ -5,6 +5,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  TextInput
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Constants from "expo-constants";
@@ -22,12 +23,18 @@ export default function ListOng() {
   const navigation = useNavigation();
 
   const [ongs, setOngs] = useState<Ong[]>([]);
+  const [filteredOng, setFilteredOng] = useState<Ong[]>([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
-    api.get('ongs').then(response  => {
+    api.get('ongs').then(response => {
       setOngs(response.data)
     })
   }, [])
+
+  useEffect(() => {
+    setFilteredOng(ongs.filter(ong => ong.name.includes(search)))
+  }, [search])
 
   function handleNavigateToDetailOng(id: number) {
     navigation.navigate("OngDetails", { id });
@@ -109,6 +116,18 @@ const styles = StyleSheet.create({
     color: "#3f3d56",
 
     //marginTop: 10,
+  },
+
+  input: {
+    marginTop: 30,
+    backgroundColor: "#fff",
+    width: "100%",
+    height: 36,
+    borderRadius: 18,
+    borderColor: "#15c3d6",
+    borderWidth: 1,
+    paddingHorizontal: 15
+
   },
 
   flatListDetails: {

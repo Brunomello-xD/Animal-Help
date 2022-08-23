@@ -1,3 +1,4 @@
+// Representação da tabela como uma classe
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 
 import Ong from './Ongs'

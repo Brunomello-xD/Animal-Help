@@ -49,7 +49,7 @@ export default function RegistrationOng() {
 
     try {
       await api.post('ongs', data);
-      // await fetch('http://192.168.0.110:3000/ongs', {
+      // await fetch('http://192.168.0.199:3000/ongs', {
       //   method: 'POST',
       //   body: data,
       // })

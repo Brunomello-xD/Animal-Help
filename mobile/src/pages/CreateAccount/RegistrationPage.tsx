@@ -42,7 +42,7 @@ export default function RegistrationPage() {
     }
 
     if (password !== passwordRepeat) {
-      alert("Senha errada otário")
+      alert("Senhas erradas")
     }
 
   }

@@ -4,8 +4,8 @@ import bcryptjs from "bcryptjs";
 @Entity("users")
 export class Users {
 
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: Number;
 
   @Column()
   email: string;
