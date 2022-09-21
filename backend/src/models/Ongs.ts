@@ -54,5 +54,4 @@ export default class Ongs {
   })
   @JoinColumn({ name: 'ong_id'})
   images: Image[];
-
 }

@@ -12,6 +12,8 @@ import { FontAwesome5, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Input } from "react-native-elements";
 
+import api from '../../services/api';
+
 const windowHeight = Dimensions.get("window").height;
 
 export default function LoginPage() {
@@ -22,7 +24,24 @@ export default function LoginPage() {
 
   const navigation = useNavigation();
 
-  function justATeste() {
+  async function justATeste() {
+    const data = {
+      email,
+      password
+    }
+
+    try {
+      await api.post('auth', data );
+      navigation.navigate("MapScreen");
+      alert("Login feito com sucesso! Aproveite!")
+      return
+    } catch (error) {
+      alert("Erro no login, tente novamente :(")
+      console.log(error);
+      return
+    }
+
+    
     navigation.navigate("MapScreen");
   }
 

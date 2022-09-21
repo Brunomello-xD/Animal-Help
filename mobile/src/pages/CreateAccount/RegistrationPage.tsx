@@ -5,12 +5,14 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
-  ScrollView,
+  ScrollView
 } from "react-native";
 import Constants from "expo-constants";
 import { FontAwesome5, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Input } from "react-native-elements";
+
+import api from '../../services/api';
 
 const windowHeight = Dimensions.get("window").height;
 
@@ -32,19 +34,38 @@ export default function RegistrationPage() {
     navigation.navigate("LoginPage");
   }
 
-  function clickOnRegister() {
+  async function clickOnRegister() {
     if (name === "") {
-      alert("Prencha o campo Nome")
+      return alert("Prencha o campo Nome")
     }
 
     if (email === "") {
-      alert("Prencha o campo E-mail")
+      return alert("Prencha o campo E-mail")
+    }
+
+    if (password === '' && passwordRepeat === '' ) {
+      return alert("Preencha o campo senha")
     }
 
     if (password !== passwordRepeat) {
-      alert("Senhas erradas")
+      return alert("Senhas erradas")
     }
 
+    const data = {
+      email,
+      password
+    }
+
+    try {
+      await api.post('users', data );
+      navigation.navigate("LoginPage");
+      alert("Cadastro concluído com sucesso!")
+      return
+    } catch (error) {
+      alert("Erro no cadastro, tente novamente")
+      console.log(error);
+      return
+    }
   }
 
   return (

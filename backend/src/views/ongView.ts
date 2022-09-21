@@ -23,6 +23,5 @@ export default {
    * */ 
   renderMany(ongs: Ong[]) {
     return ongs.map(ong => this.render(ong))
-
   }
 }
